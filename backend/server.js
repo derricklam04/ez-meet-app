@@ -19,10 +19,10 @@ connection.once('open', () => {
 })
 
 const usersRouter = require('./routes/users');
-const weeksRouter = require('./routes/weeks');
+const plansRouter = require('./routes/plans');
 
 app.use('/users', usersRouter)
-app.use('/weeks', weeksRouter)
+app.use('/plans', plansRouter)
 
 
 app.listen(port, () => {

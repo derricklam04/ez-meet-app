@@ -70,7 +70,7 @@ export default function CreateGrid() {
 
         console.log(userInput);
 
-        axios.post('http://localhost:5000/weeks/add', userInput)
+        axios.post('http://localhost:5000/plans/add', userInput)
             .then(res => console.log(res.data))
             .catch(err => console.log(err));
 

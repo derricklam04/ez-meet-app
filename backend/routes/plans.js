@@ -1,9 +1,9 @@
 const router = require('express').Router();
-let Week = require('../models/week.model'); 
+let Plan = require('../models/plan.model'); 
 
 router.route('/').get((req,res) => {
-    Week.find()
-        .then(weeks => res.json(weeks))
+    Plan.find()
+        .then(plans => res.json(plans))
         .catch(err => res.status(400).json("Error: "+err));
 });
 
@@ -17,36 +17,36 @@ router.route('/add').post((req, res) => {
     const endTime = req.body.endTime;
     // const grid = req.body.grid;
 
-    const newWeek = new Week({calenderType,
+    const newPlan = new Plan({calenderType,
          timeZone,daysOfWeek, timeInterval, startTime, endTime });
     
     //console.log(newWeek);
 
-    newWeek.save() 
-    .then(() => res.json(`Week added [Access Code: ${newWeek.id}]`))
+    newPlan.save() 
+    .then(() => res.json(`Plan added [Access Code: ${newPlan.id}]`))
     .catch(err => res.status(400).json("Error: " + err));
 })
 
 router.route('/:id').get((req, res) => {
-    Week.findById(req.params.id)
-        .then(week => res.json(week))
+    Plan.findById(req.params.id)
+        .then(plan => res.json(plan))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/:id').delete((req, res) => {
-    Week.findByIdAndDelete(req.params.id)
-        .then(week => res.json("Deleted Week: "+ week.accessCode))
+    Plan.findByIdAndDelete(req.params.id)
+        .then(plan => res.json("Deleted Plan: "+ plan.id))
         .catch(err => res.status(400).json('Error: ' + err))
 });
 
 router.route('/update/:id').post((req, res) => {
-    Week.findById(req.params.id)
-        .then(week => {
-            week.accessCode = req.body.accessCode;
-            week.grid = req.body.grid;
+    Plan.findById(req.params.id)
+        .then(plan => {
+            plan.accessCode = req.body.accessCode;
+            plan.grid = req.body.grid;
 
-            week.save()
-                .then(() => res.json(`Week [${week.accessCode}] updated!`))
+            plan.save()
+                .then(() => res.json(`Week [${plan.accessCode}] updated!`))
                 .catch(err => res.status(400).json('Error: '+err));
         })
         .catch(err => res.status(400).json('Error: ' + err));

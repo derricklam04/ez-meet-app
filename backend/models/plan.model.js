@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const weekSchema = new Schema({
+const planSchema = new Schema({
     // accessCode: {
     //     type: String,
     //     require: true,
@@ -43,5 +43,5 @@ const weekSchema = new Schema({
     timestamps:true,
 });
 
-const Week = mongoose.model('Week', weekSchema);
-module.exports = Week;
+const Plan = mongoose.model('Plan', planSchema);
+module.exports = Plan;
