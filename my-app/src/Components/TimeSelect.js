@@ -9,8 +9,8 @@ const getTodayAtSpecificHour = (hour = 12) =>
   set(now, { hours: hour, minutes: 0, seconds: 0, milliseconds: 0 });
 
 export const selectedInterval = [
-  getTodayAtSpecificHour(10),
-  getTodayAtSpecificHour(14)
+  getTodayAtSpecificHour(9),
+  getTodayAtSpecificHour(17)
 ];
 
 export const timelineInterval = [

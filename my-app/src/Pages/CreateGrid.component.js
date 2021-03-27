@@ -4,17 +4,17 @@ import { Form, Row, Col, Button, ToggleButtonGroup } from 'react-bootstrap';
 
 import TimezonePicker from 'react-bootstrap-timezone-picker';
 import 'react-bootstrap-timezone-picker/dist/react-bootstrap-timezone-picker.min.css';
-
 import TimeSelect from '../Components/TimeSelect';
 import DaySelect from '../Components/DaySelect';
 
+import axios from 'axios';
 
 export default function CreateGrid() {
     const [userInput, setUserInput] = useReducer(
         (state, newState) => ({...state,  ...newState}),
         {
-            accessCode: '',
-            calenderType: 'weekly',
+            // accessCode: '',
+            calenderType: 7,
             timeZone: 'Eastern Time',
             daysOfWeek: {
                 sun: false,
@@ -25,9 +25,9 @@ export default function CreateGrid() {
                 fri: true,
                 sat: false
             },
-            timeInterval: '30',
-            startTime: '',
-            endTime: '',
+            timeInterval: 30,
+            startTime: '09:00:00 AM',
+            endTime: '05:00:00 PM',
         }
     )
 
@@ -67,8 +67,16 @@ export default function CreateGrid() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
         console.log(userInput);
+
+        axios.post('http://localhost:5000/weeks/add', userInput)
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err));
+
+        // window.location = '/view/:id'
     }
+
 
     
     return (
@@ -82,9 +90,9 @@ export default function CreateGrid() {
                     <Col>
                         <Form.Label>Calender Type:</Form.Label>
                         <ToggleButtonGroup name="calenderType" type="radio" value={userInput.calenderType} onChange={handleTypeChange} >
-                            <ToggleButton value="weekly">Weekly</ToggleButton>
-                            <ToggleButton value="monthly">Monthly</ToggleButton>
-                            <ToggleButton value="custom">Custom</ToggleButton>
+                            <ToggleButton value={7}>Weekly</ToggleButton>
+                            <ToggleButton value={30}>Monthly</ToggleButton>
+                            {/* <ToggleButton value={}>Custom</ToggleButton> */}
                         </ToggleButtonGroup>
                     </Col>
                     <Col>
@@ -107,10 +115,10 @@ export default function CreateGrid() {
 
                     <Col>
                     <Form.Label>Select Time Intervals:</Form.Label>
-                    <ToggleButtonGroup name="timeInterval" type="radio" value={userInput.timeInterval} onChange={handleIntervalChange} >
-                            <ToggleButton value="15">15 mins</ToggleButton>
-                            <ToggleButton value="30">30 mins</ToggleButton>
-                            <ToggleButton value="60">1 hr</ToggleButton>
+                        <ToggleButtonGroup name="timeInterval" type="radio" value={userInput.timeInterval} onChange={handleIntervalChange} >
+                            <ToggleButton value={15}>15 mins</ToggleButton>
+                            <ToggleButton value={30}>30 mins</ToggleButton>
+                            <ToggleButton value={60}>1 hr</ToggleButton>
                         </ToggleButtonGroup>
                     </Col>
                 </Row>
