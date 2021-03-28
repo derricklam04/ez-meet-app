@@ -38,19 +38,19 @@ export default function CreateGrid() {
     }
 
     const handleTypeChange = (event) => {
-        console.log(event);
+        // console.log(event);
         setUserInput({"calenderType":event});
     }
     const handleZoneChange = (event) => {
-        console.log(event);
+        // console.log(event);
         setUserInput({"timeZone":event});
     }
     const handleDaysChange = (days) => {
-        console.log(days);
+        // console.log(days);
         setUserInput({"daysOfWeek": days});
     }
     const handleIntervalChange = (event) =>{
-        console.log(event);
+        // console.log(event);
         setUserInput({"timeInterval":event});
     }
     const handleTimeChange = (selectedInterval) =>{
@@ -58,7 +58,7 @@ export default function CreateGrid() {
         let start = selectedInterval[0].toLocaleTimeString();
         let end = selectedInterval[1].toLocaleTimeString();
 
-        console.log(start,end);
+        // console.log(start,end);
 
         setUserInput({"startTime":start});
         setUserInput({"endTime":end});
@@ -71,12 +71,12 @@ export default function CreateGrid() {
         console.log(userInput);
 
         axios.post('http://localhost:5000/plans/add', userInput)
-            .then(res => console.log(res.data))
+            .then(res => {
+                console.log(res.data)
+                window.location=`/plans/${res.data}`
+            })
             .catch(err => console.log(err));
-
-        // window.location = '/view/:id'
     }
-
 
     
     return (

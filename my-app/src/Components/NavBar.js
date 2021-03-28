@@ -1,6 +1,8 @@
 import { Navbar, Nav, Form, FormControl, Button, NavDropdown } from 'react-bootstrap';
 import {BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import CreateGrid from '../Pages/CreateGrid.component';
+import ViewGrid from '../Pages/ViewGrid.component';
+import Home from '../Pages/Home'
 
 export function NavBar(){
     return(
@@ -21,15 +23,18 @@ export function NavBar(){
                             <NavDropdown.Item href="#action/3.4">Sign Out</NavDropdown.Item>
                         </NavDropdown>
                         </Nav>
-                        <Form inline>
-                        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                        <Button variant="outline-success">Search</Button>
-                        </Form>
+                        
                     </Navbar.Collapse>
                 </Navbar>
                 <Switch>
                     <Route path="/create">
                         <CreateGrid></CreateGrid>
+                    </Route>
+                    <Route exact path="/">
+                        <Home></Home>
+                    </Route>
+                    <Route path="/plans/:id">
+                        <ViewGrid></ViewGrid>
                     </Route>
                 </Switch>
             </Router>

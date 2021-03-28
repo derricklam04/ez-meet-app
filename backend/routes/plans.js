@@ -23,7 +23,7 @@ router.route('/add').post((req, res) => {
     //console.log(newWeek);
 
     newPlan.save() 
-    .then(() => res.json(`Plan added [Access Code: ${newPlan.id}]`))
+    .then(() => res.json(`${newPlan.id}`))
     .catch(err => res.status(400).json("Error: " + err));
 })
 
