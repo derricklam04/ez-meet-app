@@ -2,6 +2,8 @@ import {useLocation, Link} from 'react-router-dom';
 import axios from 'axios';
 import {useState, useEffect} from 'react';
 
+import DragSelect from '../Components/DragSelect';
+
 export default function ViewGrid() {
     const [plan, setPlan] = useState(null);
     const [address,setAddress] = useState(useLocation());
@@ -25,12 +27,11 @@ export default function ViewGrid() {
         )
     }else{
         return (
-            <div>
+            <div className="viewPlan">
                 <h1>View Plan</h1>
-                <div>
-                    {plan._id}
-                </div>
-            </div> 
+                <div>{plan._id}</div>      
+                <DragSelect className="DragTable" />
+             </div> 
             
         )
     }

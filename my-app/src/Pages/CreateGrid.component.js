@@ -78,6 +78,9 @@ export default function CreateGrid() {
             .catch(err => console.log(err));
     }
 
+    const createTable = () => {
+        
+    }
     
     return (
         <div>
@@ -94,6 +97,10 @@ export default function CreateGrid() {
                             <ToggleButton value={30}>Monthly</ToggleButton>
                             {/* <ToggleButton value={}>Custom</ToggleButton> */}
                         </ToggleButtonGroup>
+                        
+                        <br></br>
+                        <Form.Label>Select Days of week:</Form.Label>
+                        <DaySelect onDaysChange={handleDaysChange}></DaySelect>
                     </Col>
                     <Col>
                     <Form.Label>Time Zone:</Form.Label>
@@ -105,31 +112,21 @@ export default function CreateGrid() {
                         onChange = {handleZoneChange}
                         value = {userInput.timeZone}
                         />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                    <Form.Label>Select Days of week:</Form.Label>
-                    <DaySelect onDaysChange={handleDaysChange}></DaySelect>
-                    </Col>
 
-                    <Col>
-                    <Form.Label>Select Time Intervals:</Form.Label>
+                        <br></br>
+                        <Form.Label>Select Time Intervals:</Form.Label>
                         <ToggleButtonGroup name="timeInterval" type="radio" value={userInput.timeInterval} onChange={handleIntervalChange} >
                             <ToggleButton value={15}>15 mins</ToggleButton>
                             <ToggleButton value={30}>30 mins</ToggleButton>
                             <ToggleButton value={60}>1 hr</ToggleButton>
                         </ToggleButtonGroup>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                    </Col>
-                    <Col>
+
+                        <br></br>
                         <Form.Label>Select Time Range:</Form.Label>
-                        <TimeSelect onTimeChange={handleTimeChange}/>
+                        <TimeSelect onTimeChange={handleTimeChange} interval={userInput.timeInterval}/>
                     </Col>
                 </Row>
+                
                 <Button variant="primary" type="submit" >Create</Button>
             </Form>
         </div> 

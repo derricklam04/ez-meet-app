@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { format, set  } from "date-fns";
 import TimeRange from "react-timeline-range-slider";
 
@@ -22,11 +22,35 @@ export const timelineInterval = [
 
 // import "./styles.scss";
 
+
 class TimeSelect extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
   state = {
     error: false,
-    selectedInterval
+    selectedInterval,
+    ticks: 30,
+    steps: 1800000
   };
+
+  componentWillReceiveProps(nextProps){
+    switch(nextProps.interval){
+      case 15:
+        this.setState({ticks: 45});
+        this.setState({steps: 900000});
+        break;
+      case 30:
+        this.setState({ticks: 30});
+        this.setState({steps: 1800000});
+        break;
+      case 60:
+        this.setState({ticks: 15});
+        this.setState({steps: 3600000});
+        break;
+    }
+  }
 
   errorHandler = ({ error }) => this.setState({ error });
 
@@ -36,7 +60,7 @@ class TimeSelect extends React.Component {
   };
 
   render() {
-    const { selectedInterval, error } = this.state;
+    const { steps, ticks , selectedInterval, error} = this.state;
     return (
       <div className="container">
         <div className="info">
@@ -48,8 +72,8 @@ class TimeSelect extends React.Component {
 
         <TimeRange
           error={error}
-          ticksNumber={30}
-          step={900000}
+          ticksNumber={ticks}
+          step={steps}
           selectedInterval={selectedInterval}
           timelineInterval={timelineInterval}
           onUpdateCallback={this.errorHandler}

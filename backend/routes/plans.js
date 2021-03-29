@@ -20,8 +20,6 @@ router.route('/add').post((req, res) => {
     const newPlan = new Plan({calenderType,
          timeZone,daysOfWeek, timeInterval, startTime, endTime });
     
-    //console.log(newWeek);
-
     newPlan.save() 
     .then(() => res.json(`${newPlan.id}`))
     .catch(err => res.status(400).json("Error: " + err));
