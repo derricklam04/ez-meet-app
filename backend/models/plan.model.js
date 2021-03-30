@@ -2,13 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const planSchema = new Schema({
-    // accessCode: {
-    //     type: String,
-    //     require: true,
-    //     unique: true,
-    //     trim: true,
-    //     minlength: 3
-    // },
+    startDate: {
+        type: Date,
+        require: true
+    },
     calenderType: {
         type: Number,
         require: true
@@ -28,17 +25,17 @@ const planSchema = new Schema({
         require: true
     },
     startTime: {
-        type: String, 
+        type: Date, 
         require: true,
     },
     endTime: {
-        type: String,
+        type: Date,
         require: true
     },
-    // grid: {
-    //     type: Array,
-    //     require: true
-    // },
+    table: {
+        type: Array,
+        require: true
+    },
 }, {
     timestamps:true,
 });

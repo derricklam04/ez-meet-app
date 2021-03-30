@@ -1,6 +1,7 @@
 import {useLocation, Link} from 'react-router-dom';
 import axios from 'axios';
 import {useState, useEffect} from 'react';
+import {Row, Col} from 'react-bootstrap';
 
 import DragSelect from '../Components/DragSelect';
 
@@ -30,7 +31,16 @@ export default function ViewGrid() {
             <div className="viewPlan">
                 <h1>View Plan</h1>
                 <div>{plan._id}</div>      
-                <DragSelect className="DragTable" />
+                <Row>
+                    <Col>
+                    {/* <DragSelect className="DragTable" /> */}
+
+                    </Col>
+                    <Col>
+                    <DragSelect daysOfWeek={plan.daysOfWeek} table={plan.table} className="DragTable" />
+
+                    </Col>
+                </Row>
              </div> 
             
         )

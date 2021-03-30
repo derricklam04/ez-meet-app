@@ -19,13 +19,13 @@ const useStyles = makeStyles((theme) => ({
 export default function DaySelect(props) {
   const classes = useStyles();
   const [state, setState] = React.useState({
-    sun: false,
-    mon: true,
-    tues: true,
-    weds: true,
-    thur: true,
-    fri: true,
-    sat: false,
+    Sun: false,
+    Mon: true,
+    Tue: true,
+    Wed: true,
+    Thu: true,
+    Fri: true,
+    Sat: false,
   });
 
   const handleChange = (event) => {
@@ -33,8 +33,8 @@ export default function DaySelect(props) {
     props.onDaysChange({ ...state, [event.target.name]: event.target.checked });
   };
 
-  const { sun, mon, tues, weds, thur, fri, sat } = state;
-  const error = [sun, mon, tues, weds, thur, fri, sat ].filter((v) => v).length < 1;
+  const { Sun, Mon, Tue, Wed, Thu, Fri, Sat } = state;
+  const error = [Sun, Mon, Tue, Wed, Thu, Fri, Sat ].filter((v) => v).length < 1;
 
   return (
     <div className={classes.root}>
@@ -42,31 +42,31 @@ export default function DaySelect(props) {
         <FormLabel component="legend">Select at least one</FormLabel>
         <FormGroup>
           <FormControlLabel
-            control={<Checkbox checked={sun} onChange={handleChange} name="sun" />}
+            control={<Checkbox checked={Sun} onChange={handleChange} name="Sun" />}
             label="Sunday"
           />
           <FormControlLabel
-            control={<Checkbox checked={mon} onChange={handleChange} name="mon" />}
+            control={<Checkbox checked={Mon} onChange={handleChange} name="Mon" />}
             label="Monday"
           />
           <FormControlLabel
-            control={<Checkbox checked={tues} onChange={handleChange} name="tues" />}
+            control={<Checkbox checked={Tue} onChange={handleChange} name="Tue" />}
             label="Tuesday"
           />
           <FormControlLabel
-            control={<Checkbox checked={weds} onChange={handleChange} name="weds" />}
+            control={<Checkbox checked={Wed} onChange={handleChange} name="Wed" />}
             label="Wednesday"
           />
           <FormControlLabel
-            control={<Checkbox checked={thur} onChange={handleChange} name="thur" />}
+            control={<Checkbox checked={Thu} onChange={handleChange} name="Thu" />}
             label="Thursday"
           />
           <FormControlLabel
-            control={<Checkbox checked={fri} onChange={handleChange} name="fri" />}
+            control={<Checkbox checked={Fri} onChange={handleChange} name="Fri" />}
             label="Friday"
           />
           <FormControlLabel
-            control={<Checkbox checked={sat} onChange={handleChange} name="sat" />}
+            control={<Checkbox checked={Sat} onChange={handleChange} name="Sat" />}
             label="Saturday"
           />
         </FormGroup>

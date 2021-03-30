@@ -8,17 +8,17 @@ router.route('/').get((req,res) => {
 });
 
 router.route('/add').post((req, res) => {
-    // const accessCode = req.body.accessCode;
+    const startDate = req.body.startDate;
     const calenderType = req.body.calenderType;
     const timeZone = req.body.timeZone;
     const daysOfWeek = req.body.daysOfWeek;
     const timeInterval = req.body.timeInterval;
     const startTime = req.body.startTime;
     const endTime = req.body.endTime;
-    // const grid = req.body.grid;
+    const table = req.body.table;
 
-    const newPlan = new Plan({calenderType,
-         timeZone,daysOfWeek, timeInterval, startTime, endTime });
+    const newPlan = new Plan({startDate, calenderType,
+         timeZone,daysOfWeek, timeInterval, startTime, endTime, table});
     
     newPlan.save() 
     .then(() => res.json(`${newPlan.id}`))

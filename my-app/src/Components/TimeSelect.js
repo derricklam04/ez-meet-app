@@ -55,6 +55,7 @@ class TimeSelect extends React.Component {
   errorHandler = ({ error }) => this.setState({ error });
 
   onChangeCallback = (selectedInterval) => {
+    console.log(selectedInterval);
     this.setState({ selectedInterval });
     this.props.onTimeChange(selectedInterval);
   };
