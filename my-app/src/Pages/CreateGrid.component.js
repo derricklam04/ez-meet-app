@@ -84,7 +84,8 @@ export default function CreateGrid() {
         let height = timeDiff / userInput.timeInterval;
 
         var table = Array.from({length: height+1}, 
-            e => Array.from({length:8}, e =>({users: []})));
+            e => Array.from({length:8}, e =>({users: new Set()})));
+        console.log(table);
 
         // For first row
         for (let i = 1; i < 8; i++){ 
@@ -93,7 +94,7 @@ export default function CreateGrid() {
             table[0][i]['date'] = next;
          }
          // For first Col
-        for (let j = 1; j < height+1; j++){ 
+        for (let j = 0; j < height+1; j++){ 
             var increments = new Date();
             console.log(userInput.startTime);
             increments.setMinutes( userInput.startTime.getMinutes() + (j * 30) );
@@ -105,8 +106,7 @@ export default function CreateGrid() {
             table[j][0]['time'] = localeSpecificTime.replace(/:\d+ /, ' ');
          }
 
-        //setUserInput({['table']:table});
-        // return table
+        setUserInput({['table']:table});
         
     }
     
