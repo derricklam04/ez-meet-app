@@ -9,6 +9,16 @@ class ViewTable extends React.Component {
         e => Array.from({length:8}, e => false )),
     };
 
+    getUsers(row,col){
+        const tables = this.props.table;
+        let user = Object.keys(tables[row][col])
+            .filter( function(k){ 
+                return tables[row][col][k];
+            })
+
+        return user;
+    }
+
 
     renderTableData() {
       const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
@@ -31,8 +41,8 @@ class ViewTable extends React.Component {
                     if (dayIndex === 0){
                       return <td key={dayIndex} disabled={true}>{day.time}</td>
                     }else{
-                      return <td  key={this.props.table[weekIndex][dayIndex].users} disabled={true}>
-                          {this.props.table[weekIndex][dayIndex].users}</td>
+                      return <td key={this.getUsers(weekIndex,dayIndex)} disabled={true}>
+                          {this.getUsers(weekIndex,dayIndex)}</td>
                     }
                   })}
                 </tr>

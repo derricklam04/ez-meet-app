@@ -65,17 +65,7 @@ export default function CreateGrid() {
     const handleSubmit = (event) => {
         event.preventDefault();
         createTable();
-        // setUserInput({['table']:table});
 
-        // setTimeout(3000);
-        // console.log(userInput);
-
-        // axios.post('http://localhost:5000/plans/add', userInput)
-        //     .then(res => {
-        //         console.log(res.data)
-        //         window.location=`/plans/${res.data}`
-        //     })
-        //     .catch(err => console.log(err));
     }
 
     const createTable = () => {
@@ -84,14 +74,15 @@ export default function CreateGrid() {
         let height = timeDiff / userInput.timeInterval;
 
         var table = Array.from({length: height+1}, 
-            e => Array.from({length:8}, e =>({users: new Set()})));
-        console.log(table);
+            e => Array.from({length:8}, e => ({})));
 
         // For first row
         for (let i = 1; i < 8; i++){ 
             var next = new Date();
             next.setDate(userInput.startDate.getDate() + i);
             table[0][i]['date'] = next;
+
+
          }
          // For first Col
         for (let j = 0; j < height+1; j++){ 
@@ -105,6 +96,9 @@ export default function CreateGrid() {
             
             table[j][0]['time'] = localeSpecificTime.replace(/:\d+ /, ' ');
          }
+
+        
+        console.log(table);
 
         setUserInput({['table']:table});
         

@@ -17,26 +17,34 @@ export default function ViewGrid() {
         console.log(id);
         axios.get(`http://localhost:5000/plans/${id}`)
             .then(res => {
-                setPlan(res.data);
                 
+                
+
+                setPlan(res.data);
                 console.log(res.data);
                 
             })
             .catch( err => console.log(err));
     }, []);
 
-    // useEffect(()=> {
-    //     if (plan !== null)
-    //     setCells(Array.from({length: plan.table.length}, 
-    //         e => Array.from({length:8}, e => false )));
-    // }, [plan])
 
     const handleTableEdit = (coords , username, cells) => {
         // console.log(row,col,username);
         var tempPlan = plan;
-        coords.forEach(coord => {
-            tempPlan.table[coord[0]][coord[1]]['users'] = username;
-        })
+        // coords.forEach(coord => {
+        //     tempPlan.table[coord[0]][coord[1]]['users'] = username;
+        // })
+        // setPlan(tempPlan);
+
+        for (let row = 1; row < cells.length; row ++){
+            for (let col = 1; col < 8 ; col ++){
+                if (cells[row][col]){
+                    tempPlan.table[row][col][username] = true
+                }else{
+                    tempPlan.table[row][col][username] = false
+                }
+            }
+        }
         setPlan(tempPlan);
         setCells(cells);
     }

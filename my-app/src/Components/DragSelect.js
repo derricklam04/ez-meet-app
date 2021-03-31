@@ -78,7 +78,7 @@ class DragSelect extends React.Component {
     }
   
     handleChange = cells => {
-      console.log(cells);
+      // console.log(cells);
       this.setState({ cells });
 
       let coords = [];
@@ -88,7 +88,7 @@ class DragSelect extends React.Component {
         }
       }
 
-      this.props.onTableEdit(coords, this.state.username, this.state.cells);
+      this.props.onTableEdit(coords, this.state.username, cells);
     }
   
     handleClick = () => {
