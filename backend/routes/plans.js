@@ -40,11 +40,10 @@ router.route('/:id').delete((req, res) => {
 router.route('/update/:id').post((req, res) => {
     Plan.findById(req.params.id)
         .then(plan => {
-            plan.accessCode = req.body.accessCode;
-            plan.grid = req.body.grid;
+            plan.table = req.body;
 
             plan.save()
-                .then(() => res.json(`Week [${plan.accessCode}] updated!`))
+                .then(() => res.json(`Week [${plan.id}] updated!`))
                 .catch(err => res.status(400).json('Error: '+err));
         })
         .catch(err => res.status(400).json('Error: ' + err));

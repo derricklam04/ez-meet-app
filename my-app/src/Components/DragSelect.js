@@ -81,14 +81,14 @@ class DragSelect extends React.Component {
       // console.log(cells);
       this.setState({ cells });
 
-      let coords = [];
-      for (let row = 1; row < cells.length ; row++){
-        for (let col = 1; col < 8 ; col++){
-          if (cells[row][col]) coords.push([row, col]);
-        }
-      }
+      // let coords = [];
+      // for (let row = 1; row < cells.length ; row++){
+      //   for (let col = 1; col < 8 ; col++){
+      //     if (cells[row][col]) coords.push([row, col]);
+      //   }
+      // }
 
-      this.props.onTableEdit(coords, this.state.username, cells);
+      this.props.onTableEdit(this.state.username, cells);
     }
   
     handleClick = () => {

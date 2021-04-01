@@ -1,13 +1,15 @@
 import TableDragSelect from 'react-table-drag-select';
 import React from 'react';
 
-import '../DragTable.scss';
+import '../ViewTable.scss';
 
 class ViewTable extends React.Component {
     state = {
       cells: Array.from({length: this.props.table.length}, 
         e => Array.from({length:8}, e => false )),
+      
     };
+    
 
     getUsers(row,col){
         const tables = this.props.table;
@@ -38,11 +40,13 @@ class ViewTable extends React.Component {
         } else {
           return <tr key={weekIndex}>
                   {week.map((day, dayIndex)=>{
+                    var users = this.getUsers(weekIndex,dayIndex)
                     if (dayIndex === 0){
                       return <td key={dayIndex} disabled={true}>{day.time}</td>
                     }else{
-                      return <td key={this.getUsers(weekIndex,dayIndex)} disabled={true}>
-                          {this.getUsers(weekIndex,dayIndex)}</td>
+                      return <td key={this.props.scale[users.length]} disabled={true}
+                       style={{backgroundColor: this.props.scale[users.length]}} >
+                          </td>
                     }
                   })}
                 </tr>
@@ -53,7 +57,7 @@ class ViewTable extends React.Component {
     render(){
         return(
           <div> 
-             <TableDragSelect value={this.state.cells} onChange={this.handleChange}>
+             <TableDragSelect className="ViewTable" value={this.state.cells} onChange={this.handleChange}>
              {this.renderTableData()}
     
              </TableDragSelect>
