@@ -56,7 +56,7 @@ export function NavBar(){
                 </Navbar>
                 <Switch>
                     <Route path="/create">
-                        <CreateGrid></CreateGrid>
+                        <CreateGrid ></CreateGrid>
                     </Route>
                     <Route exact path="/">
                         <Home></Home>

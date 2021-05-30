@@ -65,10 +65,15 @@ class TimeSelect extends React.Component {
     return (
       <div className="container">
         <div className="info">
-          <span>Selected Interval: </span>
-          {selectedInterval.map((d, i) => (
-            <span key={i}>{format(d, "HH:mm")}</span>
-          ))}
+          <span style={{color: 'grey'}}>Selected Interval: </span>
+          {selectedInterval.map((d, i) => {
+              var time = new Date(d).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+              if (i === 0) return <span style={{color: 'grey'}} key={i}>{time} - </span>
+              else return <span style={{color: 'grey'}} key={i}>{time}</span>
+
+            
+          }
+          )}
         </div>
 
         <TimeRange
@@ -79,6 +84,7 @@ class TimeSelect extends React.Component {
           timelineInterval={timelineInterval}
           onUpdateCallback={this.errorHandler}
           onChangeCallback={this.onChangeCallback}
+          formatTick={ms => format(new Date(ms), 'HH')}
         />
       </div>
     );

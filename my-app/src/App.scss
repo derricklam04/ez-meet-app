@@ -5,6 +5,7 @@
   width: 100%;
   height: 100%;
   background-size: cover;
+  background-position: center;
 }
 
 .App-header {
@@ -49,7 +50,7 @@
   width: 50%;
   margin-top: 8%;
   margin-left: 2.5%;
-  color: rgb(224, 196, 255);
+  color: rgb(235, 217, 255);
 
   .subtitle{
     padding-left: 7px;
@@ -57,20 +58,75 @@
     font-size: 2.5vw;
   }
   .title{
-    padding-bottom: 1vw;
+    padding-bottom: 3vw;
     font-size: 10.5vw;
   }
 
   .create-button{
     border-radius: 20px;
-    background: rgba(255,78,184,0.7);
-    padding: 10px 30px; 
+    background: linear-gradient(5deg, rgba(184,26,185,0.6460959383753502) 0%, rgba(255,0,247,0.6460959383753502) 50%);
+
+    padding: 5px 30px; 
     width: fit-content;
     font-size: 2vw;
     color: rgb(255, 239, 239)
   }
   .create-button:hover{
-    background: rgba(255,78,184, 0.9);
+    background: linear-gradient(5deg, rgba(184,26,185,1) 0%, rgba(255,0,247,1) 50%);
+
+  }
+}
+
+.create-page{
+  margin: 2% 2%;
+  margin-bottom: 20px;
+  // height: fit-content;
+  background: linear-gradient(186deg, rgba(209,247,255,0.95) 11%, rgba(230,254,255,0.9) 100%);
+  box-shadow: 0 0 3px blanchedalmond ;
+  border-radius: 20px;
+  padding: 1rem 0rem;
+  overflow-y: scroll;
+  position: relative;
+
+  // .col{
+  //   padding: 0px;
+  // }
+  .container{
+    margin: 0.7rem 0rem;
+    padding-left: 2rem;
+    padding-right: 0;
+    width: 40vw;
+  }
+  
+  .card{
+    color: rgb(111, 111, 111);
+    margin: 0.1rem 0rem 0rem 2rem;
+    padding: 1.5rem 1rem;
+    background-color: rgba(254, 254, 254, 0.95);
+    box-shadow: 0 0 5px rgb(215, 215, 215) ;
+    border: white;
+    border-radius: 10px;
+    display:inline-block;
+    max-width: 90%;
+    min-width: 90%;
+    .header{
+      font-size: x-large;
+      float:left;
+    }
+    .body{
+      float:right;
+    }
+  }
+  .create-button{
+    font-size: x-large;
+    background: linear-gradient(5deg, rgba(184,26,185,0.6460959383753502) 0%, rgba(255,0,247,0.6460959383753502) 50%);
+    border-color:   rgba(255,0,247,0.1);
+    margin: 0.1rem 2.2rem 0rem 2rem;
+    padding: 0.5rem 0rem;
+    width: 30%;
+    position: absolute;
+    bottom:0;
+    right: 2%;
 
   }
 }

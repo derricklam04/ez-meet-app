@@ -1,12 +1,17 @@
-import { Nav } from 'react-bootstrap';
 import './App.scss';
-import { NavBar } from "./Components/NavBar"
-import BackGround from "./Photos/background.jpg"
-import {Navbar} from "react-bootstrap"
+import { NavBar } from "./Components/NavBar";
+import BackGround from "./Photos/background.jpg";
+
 
 function App(){
+
+  var background = {
+    backgroundImage: `url(${BackGround})`
+  };
+  
+
   return(
-    <div className="App" style={{backgroundImage: `url(${BackGround})`}} >
+    <div className="App" style={background} >
       <NavBar/>
       {/* <Navbar style={{height:18}} fixed="bottom" expand="lg" variant="light" bg="light" >
         

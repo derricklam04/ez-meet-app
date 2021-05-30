@@ -8,6 +8,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import 'react-bootstrap-timezone-picker/dist/react-bootstrap-timezone-picker.min.css';
 import TimeSelect from '../Components/TimeSelect';
 import DaySelect from '../Components/DaySelect';
+import TextField from '@material-ui/core/TextField';
+
 
 import axios from 'axios';
 
@@ -104,77 +106,112 @@ export default function CreateGrid() {
     }
     
     return (
-        <div>
+        <div className="create-page"> 
             <Form onSubmit={handleSubmit}>
                 
-                <Form.Control name="title" size="lg" placeholder="Give this plan a name!" value={userInput.title} onChange={handleChange}/>
                 
                 <Row>
                     <Col>
-                        <Form.Label>Select Starting date:</Form.Label>
-                        <div style={{zIndex: 1}}>
-                            <DatePicker
-                                selected={userInput.startDate}
-                                onChange={date => setUserInput({"startDate": date})}
-                                isClearable
-                                placeholderText="Enter Starting Date"
-                                popperPlacement="bottom"
-                                popperModifiers={{
-                                    flip: {
-                                        behavior: ["bottom"] // don't allow it to flip to be above
-                                    },
-                                    preventOverflow: {
-                                        enabled: false // tell it not to try to stay within the view (this prevents the popper from covering the element you clicked)
-                                    },
-                                    hide: {
-                                        enabled: false // turn off since needs preventOverflow to be enabled
-                                    }
-                                }}
-                            />
+                        <div className="card" style={{marginBottom: '0.4rem'}}> 
+                                <TextField fullWidth id="standard-basic" label="Event name" defaultValue={userInput.title} onChange={handleChange} />
+                        </div>
+
+                        <div className="card">
+                            <div className="header">Starting Date</div>
+                            <div className="body" style={{zIndex: 1}}>
+                                <DatePicker
+                                    selected={userInput.startDate}
+                                    onChange={date => setUserInput({"startDate": date})}
+                                    isClearable
+                                    placeholderText="Enter Starting Date"
+                                    popperPlacement="bottom"
+                                    popperModifiers={{
+                                        flip: {
+                                            behavior: ["bottom"] // don't allow it to flip to be above
+                                        },
+                                        preventOverflow: {
+                                            enabled: false // tell it not to try to stay within the view (this prevents the popper from covering the element you clicked)
+                                        },
+                                        hide: {
+                                            enabled: false // turn off since needs preventOverflow to be enabled
+                                        }
+                                    }}
+                                />
                             </div>
+
+                        </div>
                         
-                        <br></br>
-                        <Form.Label>Calender Type:</Form.Label>
-                        <ToggleButtonGroup style={{zIndex:0}} name="calenderType" type="radio" value={userInput.calenderType} 
-                            onChange={event => setUserInput({"calenderType":event})}>
-                            <ToggleButton value={7}>Weekly</ToggleButton>
-                            <ToggleButton value={14}>Biweekly</ToggleButton>
-                            <ToggleButton value={30}>Monthly</ToggleButton>
-                        </ToggleButtonGroup>
+                        <div className="card">
+                            <div className="header">Calender Type</div>
+                            <div className="body">
+                                <ToggleButtonGroup style={{zIndex:0}} name="calenderType" type="radio" value={userInput.calenderType} 
+                                    onChange={event => setUserInput({"calenderType":event})}>
+                                    <ToggleButton value={7}>Weekly</ToggleButton>
+                                    <ToggleButton value={14}>Biweekly</ToggleButton>
+                                    <ToggleButton value={30}>Monthly</ToggleButton>
+                                </ToggleButtonGroup>
+                            </div>
+
+                        </div>
                         
-                        <br></br>
-                        <Form.Label>Select Days of week:</Form.Label>
-                        <DaySelect onDaysChange={event => setUserInput({"daysOfWeek":event})}></DaySelect>
+                        
+                        <div className="card">
+                            <div className="header">Days Of Week</div>
+                            <div className="body">
+                                <DaySelect onDaysChange={event => setUserInput({"daysOfWeek":event})}></DaySelect>
+
+                            </div>
+
+                        </div>
                     </Col>
                     <Col>
-                    <Form.Label>Time Zone:</Form.Label>
-                        <TimezonePicker
-                        name = "timeZone"
-                        absolute      = {true}
-                        defaultValue  = "Eastern Time"
-                        placeholder   = "Select timezone..."
-                        onChange = {event => setUserInput({"timeZone":event})}
-                        value = {userInput.timeZone}
-                        />
+                        <div className="card">
+                            <div className="header">Time Zone</div>
+                            <div className="body">
+                                <TimezonePicker
+                                    name = "timeZone"
+                                    absolute      = {true}
+                                    defaultValue  = "Eastern Time"
+                                    placeholder   = "Select timezone..."
+                                    onChange = {event => setUserInput({"timeZone":event})}
+                                    value = {userInput.timeZone}
+                                />
+                            </div>
 
-                        <br></br>
-                        <Form.Label>Select Time Intervals:</Form.Label>
-                        <ToggleButtonGroup name="timeInterval" type="radio" value={userInput.timeInterval}
-                             onChange={event => setUserInput({"timeInterval":event})} >
-                            <ToggleButton value={15}>15 mins</ToggleButton>
-                            <ToggleButton value={30}>30 mins</ToggleButton>
-                            <ToggleButton value={60}>1 hr</ToggleButton>
-                        </ToggleButtonGroup>
+                        </div>
+                        
 
-                        <br></br>
-                        <Form.Label>Select Time Range:</Form.Label>
-                        <TimeSelect interval={userInput.timeInterval}
-                            onTimeChange={handleTimeChange}
-                        />
+                        <div className="card">  
+                            <div className="header">Time Interval</div>
+                            <div className="body">
+                                <ToggleButtonGroup name="timeInterval" type="radio" value={userInput.timeInterval}
+                                    onChange={event => setUserInput({"timeInterval":event})} >
+                                    <ToggleButton value={15}>15 mins</ToggleButton>
+                                    <ToggleButton value={30}>30 mins</ToggleButton>
+                                    <ToggleButton value={60}>60 mins</ToggleButton>
+                                </ToggleButtonGroup>
+                            </div>
+
+                        </div>
+                        
+
+                        <div className="card">
+                            <div className="header">Time Range</div>
+                            <div className="body">
+                                <TimeSelect interval={userInput.timeInterval}
+                                    onTimeChange={handleTimeChange}
+                                />
+                            </div>
+
+                        </div>
+                        
+
+                        <Button className="create-button" variant="primary" type="submit" >Create</Button>
+
                     </Col>
+
                 </Row>
                 
-                <Button variant="primary" type="submit" >Create</Button>
             </Form>
         </div> 
     )
