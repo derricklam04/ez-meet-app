@@ -15,7 +15,7 @@ export default function CreateGrid() {
     const [userInput, setUserInput] = useReducer(
         (state, newState) => ({...state,  ...newState}),
         {
-            // accessCode: '',
+            title: "",
             startDate: new Date(),
             calenderType: 7,
             timeZone: 'Eastern Time',
@@ -36,7 +36,6 @@ export default function CreateGrid() {
     )
 
     const handleChange = (event) => {
-        console.log(event);
         const {name, value} = event.target;
         setUserInput({[name]:value})
     }
@@ -106,34 +105,33 @@ export default function CreateGrid() {
     
     return (
         <div>
-            <h1>Create Grid</h1>
             <Form onSubmit={handleSubmit}>
                 
-                <Form.Control size="lg" placeholder="Enter Event Title"/>
+                <Form.Control name="title" size="lg" placeholder="Give this plan a name!" value={userInput.title} onChange={handleChange}/>
                 
                 <Row>
                     <Col>
                         <Form.Label>Select Starting date:</Form.Label>
                         <div style={{zIndex: 1}}>
-                        <DatePicker
-                            selected={userInput.startDate}
-                            onChange={date => setUserInput({"startDate": date})}
-                            isClearable
-                            placeholderText="Enter Starting Date"
-                            popperPlacement="bottom"
-                            popperModifiers={{
-                                flip: {
-                                    behavior: ["bottom"] // don't allow it to flip to be above
-                                },
-                                preventOverflow: {
-                                    enabled: false // tell it not to try to stay within the view (this prevents the popper from covering the element you clicked)
-                                },
-                                hide: {
-                                    enabled: false // turn off since needs preventOverflow to be enabled
-                                }
-                            }}
-                        />
-                        </div>
+                            <DatePicker
+                                selected={userInput.startDate}
+                                onChange={date => setUserInput({"startDate": date})}
+                                isClearable
+                                placeholderText="Enter Starting Date"
+                                popperPlacement="bottom"
+                                popperModifiers={{
+                                    flip: {
+                                        behavior: ["bottom"] // don't allow it to flip to be above
+                                    },
+                                    preventOverflow: {
+                                        enabled: false // tell it not to try to stay within the view (this prevents the popper from covering the element you clicked)
+                                    },
+                                    hide: {
+                                        enabled: false // turn off since needs preventOverflow to be enabled
+                                    }
+                                }}
+                            />
+                            </div>
                         
                         <br></br>
                         <Form.Label>Calender Type:</Form.Label>

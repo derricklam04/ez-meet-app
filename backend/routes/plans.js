@@ -8,6 +8,7 @@ router.route('/').get((req,res) => {
 });
 
 router.route('/add').post((req, res) => {
+    const title = req.body.title;
     const startDate = req.body.startDate;
     const calenderType = req.body.calenderType;
     const timeZone = req.body.timeZone;
@@ -17,7 +18,7 @@ router.route('/add').post((req, res) => {
     const endTime = req.body.endTime;
     const table = req.body.table;
 
-    const newPlan = new Plan({startDate, calenderType,
+    const newPlan = new Plan({title, startDate, calenderType,
          timeZone,daysOfWeek, timeInterval, startTime, endTime, table});
     
     newPlan.save() 
