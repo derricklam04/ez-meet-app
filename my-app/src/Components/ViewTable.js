@@ -29,12 +29,12 @@ class ViewTable extends React.Component {
 
       return this.props.table.map((week, weekIndex) => {
         if (weekIndex === 0){
-          return <tr key={weekIndex}>
-                    <td disabled={true}> </td>
+          return <tr  key={weekIndex}>
+                    <td style={{height: "0.1rem"}} disabled={true}> </td>
                     {week.slice(1).map((day, dayIndex)=>{
                       let dayofweek = days[new Date(day.date).getDay()]
                       if (!daysSelected[dayofweek]) { toDisable.add(dayIndex+1); }
-                      return <td disabled={true} key={dayIndex}> {dayofweek} </td>
+                      return <td style={{height: "0.1rem"}} disabled={true} key={dayIndex}>{dayofweek}</td>
                     })}
                   </tr>
         } else {
@@ -45,8 +45,7 @@ class ViewTable extends React.Component {
                       return <td key={dayIndex} disabled={true}>{day.time}</td>
                     }else{
                       return <td key={this.props.scale[users.length]} disabled={true}
-                       style={{backgroundColor: this.props.scale[users.length]}} >
-                          </td>
+                       style={{backgroundColor: this.props.scale[users.length]}}></td>
                     }
                   })}
                 </tr>

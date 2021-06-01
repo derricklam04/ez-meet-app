@@ -1,35 +1,34 @@
 /* Cells that can be interacted with */
 .table-drag-select td.cell-enabled {
-    color: #806E52;
-    background-color: #FBF1E8;
+    background-color: #fff6fb;
 }
 
 /* Cells that cannot be interacted with */
 .table-drag-select td.cell-disabled {
   /* Put yer css here */
+
 }
 
 /* Cells that have been selected */
 .table-drag-select td.cell-selected {
-  background-color: #FBD5D4;
+  background-color: #e3c1f9;
 }
 
 /* Cells that are in the process of being selected */
 .table-drag-select td.cell-being-selected {
-  background-color: #EACA96;
+  background-color: #ffbbfd;
 }
 
 /* Cells in first row */
 .table-drag-select tr:first-child td {
   /* Remove empty space at top of table */
-  border-top: 0;
-  line-height: 1rem;
+  height: 1rem;
 }
 
 /* Cells in first column */
 .table-drag-select td:first-child {
   /* Consume less whitespace */
-  width: 3rem;
+  // width: 3rem;
 }
 
 //   table {
@@ -37,7 +36,25 @@
 //     width: 50% ;
 //   }
 
+tbody{
+  border-collapse: separate;
+  border-spacing: 0 16px;
+}
+
 td {
-  padding: 10px 5px;
-  border: 1px dashed lightslategray;
+  // padding: 0.5rem 0rem;
+  text-align: center;
+  width: 4.5rem;
+  height: 3rem;
+  
+
+  border: 0.25rem solid transparent;
+  background-clip: padding-box;
+  border-radius: 4px;
+  transition: all 0.1s ease 0s;
+
+}
+
+td:hover{
+  box-shadow: 0 0 1px rgb(211, 211, 211);
 }

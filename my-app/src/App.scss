@@ -1,3 +1,25 @@
+@mixin glass() {
+  margin: 0% 1%;
+  margin-bottom: 20px;
+  background: linear-gradient(186deg, rgba(236, 252, 255, 0.85) 11%, rgba(243, 255, 255, 0.85) 100%);
+  box-shadow: 0 0 3px rgb(236, 242, 255) ;
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+}
+
+@mixin card() {
+  
+  background-color: rgba(254, 254, 254, 0.95);
+  box-shadow: 0 0 4px rgb(227, 227, 227) ;
+  border: white;
+  border-radius: 10px;
+}
+
+$button-primary: rgb(252, 60, 198);
+$button-secondary: rgb(243, 8, 255);
+$text-primary: rgb(84, 84, 84);
+$text-secondary: rgb(111, 111, 111);
+
 .App {
   text-align: left;
   position: fixed;
@@ -6,6 +28,8 @@
   height: 100%;
   background-size: cover;
   background-position: center;
+  overflow-y: auto;
+
 }
 
 .App-header {
@@ -21,6 +45,7 @@
 
 .Navbar{
   a{
+    font-size: x-large;
     color: rgb(248, 242, 255);
     display: block;
     padding: .5rem 1rem;
@@ -41,6 +66,9 @@
     }
     button:hover{
       background: rgb(255,78,184);
+      box-shadow: 0 0 1px rgb(235, 235, 235);
+      transition: background-color 200ms linear;
+
     }
   }
 }
@@ -51,6 +79,7 @@
   margin-top: 8%;
   margin-left: 2.5%;
   color: rgb(235, 217, 255);
+  position: relative;
 
   .subtitle{
     padding-left: 7px;
@@ -59,74 +88,122 @@
   }
   .title{
     padding-bottom: 3vw;
-    font-size: 10.5vw;
+    font-size: 12vw;
   }
 
   .create-button{
     border-radius: 20px;
-    background: linear-gradient(5deg, rgba(184,26,185,0.6460959383753502) 0%, rgba(255,0,247,0.6460959383753502) 50%);
-
-    padding: 5px 30px; 
-    width: fit-content;
+    background: $button-primary;//linear-gradient(5deg, rgba(184,26,185,0.9) 0%, rgba(255,0,247,0.9) 50%);
+    box-shadow: 0 0 3px rgb(255, 118, 211);
+    position: absolute;
+    left: 20px;
+    padding: 10px 30px; 
+    // width: fit-content;
     font-size: 2vw;
-    color: rgb(255, 239, 239)
+    color: rgb(255, 239, 239);
+
+    transition: all 0.5s ease 0s;
+
+
   }
   .create-button:hover{
-    background: linear-gradient(5deg, rgba(184,26,185,1) 0%, rgba(255,0,247,1) 50%);
+    background: $button-secondary;
+    box-shadow: 0 0 4px rgb(255, 243, 251);
 
+    transform: scale(1.05) rotate(-1deg);
+
+  }
+  .create-button:active{
+    transition: background-color 0.1s linear;
+    background: rgb(156, 12, 245);
   }
 }
 
 .create-page{
-  margin: 2% 2%;
-  margin-bottom: 20px;
-  // height: fit-content;
-  background: linear-gradient(186deg, rgba(209,247,255,0.95) 11%, rgba(230,254,255,0.9) 100%);
-  box-shadow: 0 0 3px blanchedalmond ;
-  border-radius: 20px;
-  padding: 1rem 0rem;
-  overflow-y: scroll;
-  position: relative;
+  @include glass();
+  padding: 2.5rem 0rem;
 
-  // .col{
-  //   padding: 0px;
-  // }
-  .container{
-    margin: 0.7rem 0rem;
-    padding-left: 2rem;
-    padding-right: 0;
-    width: 40vw;
-  }
+  position: relative;
   
   .card{
-    color: rgb(111, 111, 111);
+    color: $text-secondary;
     margin: 0.1rem 0rem 0rem 2rem;
     padding: 1.5rem 1rem;
-    background-color: rgba(254, 254, 254, 0.95);
-    box-shadow: 0 0 5px rgb(215, 215, 215) ;
-    border: white;
-    border-radius: 10px;
+    @include card();
     display:inline-block;
     max-width: 90%;
     min-width: 90%;
+    transition: all 0.2s ease 0s;
+
     .header{
       font-size: x-large;
       float:left;
     }
     .body{
       float:right;
+
+      .container{ // select time
+        margin: 0.7rem 0rem;
+        // padding-left: 2rem;
+        // padding-right: 0;
+        width: 40vw;
+      }
     }
+  }
+  .card:hover{
+    transform: scale(1.01);
+    box-shadow: 0 0 6px rgb(177, 177, 177) ;
   }
   .create-button{
     font-size: x-large;
-    background: linear-gradient(5deg, rgba(184,26,185,0.6460959383753502) 0%, rgba(255,0,247,0.6460959383753502) 50%);
-    border-color:   rgba(255,0,247,0.1);
+    background: $button-primary;//linear-gradient(5deg, rgba(184,26,185,0.6460959383753502) 0%, rgba(255,0,247,0.6460959383753502) 50%);
+    border-color: rgba(255, 255, 255, 0.1);
     margin: 0.1rem 2.2rem 0rem 2rem;
     padding: 0.5rem 0rem;
     width: 30%;
-    position: absolute;
-    bottom:0;
-    right: 2%;
+    float: right;
+    
+    // float: right;
+    transition: all 0.5s ease;
+  }
+  .create-button:hover{
+    background: $button-secondary;//linear-gradient(5deg, rgba(184,26,185,1) 0%, rgba(255,0,247,1) 50%);
+    border-color: transparent;
+    box-shadow: 0 0 3px rgb(76, 10, 142) ;
+    transform: scale(1.01);
+  }
+}
+
+.view-page {
+  @include glass();
+  padding: 1rem 1rem;
+  color: $text-secondary;
+  
+  .title {
+    color: $text-primary;
+    float:left;
+    font-size: xx-large;
+    padding-left: 15px;
+  }
+  .share {
+    float:right;
+  }
+  .timezone{
+    margin-top: 17px;
+    padding-left: 10px;
+    float:left;
+  }
+
+  .login{
+    margin: 0.1rem 0rem 0rem 0rem;
+    padding: 1.5rem 1rem 3rem 1rem;
+    @include card(); 
+    transition: all 0.2s ease 0s;
 
   }
+  .login:hover{
+    transform: scale(1.007);
+    box-shadow: 0 0 6px rgb(177, 177, 177) ;
+  }
+
 }

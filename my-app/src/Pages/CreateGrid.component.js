@@ -113,7 +113,7 @@ export default function CreateGrid() {
                 <Row>
                     <Col>
                         <div className="card" style={{marginBottom: '0.4rem'}}> 
-                                <TextField fullWidth id="standard-basic" label="Event name" defaultValue={userInput.title} onChange={handleChange} />
+                                <TextField name="title" fullWidth id="standard-basic" label="Event name" value={userInput.title} onChange={handleChange} />
                         </div>
 
                         <div className="card">

@@ -71,10 +71,11 @@ export default function ViewGrid() {
         )
     }else{
         return (
-            <div className="viewPlan">
-                <div>{plan.title}</div>
-                <div>Access Code: {plan._id}</div> 
-                <div>Time Zone: {plan.timeZone}</div>     
+            <div className="view-page">
+                <div className="title">{plan.title}</div>
+                <div className="timezone"><i>({plan.timeZone})</i></div>     
+
+                <div className="share">Access Code: {plan._id}</div> 
                 <Row>
                     <Col>
                     <DragSelect daysOfWeek={plan.daysOfWeek} table={plan.table} onTableEdit={handleTableEdit} />

@@ -1,9 +1,9 @@
 import TableDragSelect from 'react-table-drag-select';
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
+import TextField from '@material-ui/core/TextField';
 
-
-import '../DragTable.scss';
+import '../ViewTable.scss';
 
 class DragSelect extends React.Component {
     state = {
@@ -34,7 +34,7 @@ class DragSelect extends React.Component {
                     if (index === 0){
                       return <td disabled={true}>{day.time}</td>
                     }else{
-                      return <td  key={index} disabled={toDisable.has(index) ? true : false}>{index}</td>
+                      return <td  key={index} disabled={toDisable.has(index) ? true : false}></td>
                     }
                   })}
                 </tr>
@@ -58,17 +58,19 @@ class DragSelect extends React.Component {
         )
       } else {
         return (
-          <div>
+          <div className="login">
             <Form onSubmit={this.handleUserSubmit}>
               <Form.Group controlId="formBasicEmail">
-                <Form.Label>Sign in or continue as guest</Form.Label>
-                <Form.Control type="text" placeholder="Enter Name" value={this.state.username} onChange={this.handleUserChange} />
+                <Form.Label></Form.Label>
+                {/* <Form.Control type="text" placeholder="Enter Name"  /> */}
+                <TextField name="title" fullWidth id="standard-basic" label="Enter name" value={this.state.username} onChange={this.handleUserChange} />
+
                 <Form.Text className="text-muted">
-                  We'll never share your email with anyone else.
+                  If you are a returning user and want to make changes, enter the same name you used before. 
                 </Form.Text>
               </Form.Group>
 
-              <Button variant="primary" type="submit"> Submit </Button>
+              <Button style={{float:'right'}} variant="primary" type="submit"> Submit </Button>
             </Form>
 
           </div>
