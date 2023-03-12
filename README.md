@@ -9,8 +9,9 @@ A MERN stack (MongoDB, Express, React, Node) web application for finding the bes
 
 ## About
 Use EZ meet to easily find the best date and time for your meeting/event!
+
 Enter your availablility in the calender and see how your schedule overlaps with your group's availability over the course of a week.
-The times with the most overlap would be the best meeting time.
+The best meeting time would be the slots with the most overlap.
 
 ## Demo
 
