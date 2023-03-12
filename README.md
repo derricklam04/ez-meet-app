@@ -1,5 +1,5 @@
 # ez-meet-app
-A MERN stack (MongoDB, Express, React, Node) web application for finding the best date and time for a group to meet. 
+A MERN stack (MongoDB, Express, React, Node) web application for finding the best date and time for a group to meet.
 
 ## Table of Contents
 * [About](#about)
@@ -14,6 +14,8 @@ Enter your availablility in the calender and see how your schedule overlaps with
 The best meeting time would be the slots with the most overlap.
 
 ## Demo
+### Create Plan
+![](https://github.com/derricklam04/ez-meet-app/blob/master/README/create.gif)
 
 ## Development
 ### How to run
