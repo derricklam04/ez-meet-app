@@ -5,8 +5,8 @@ A MERN stack (MongoDB, Express, React, Node) web application for finding the bes
 ## Table of Contents
 * [About](#about)
 * [Demo](#demo)
+* [How to Run](#how-to-run)
 * [Technologies Used](#technologies-used)
-* [Features](#features)
 
 ## About
 Use EZ meet to easily find the best date and time for your meeting/event!
@@ -25,13 +25,17 @@ The best meeting time would be the slots with the most overlap.
 ### Share Your Plan With Others and Find Overlapping Availability
 ![](https://github.com/derricklam04/ez-meet-app/blob/master/README/overlap.gif)
 
-## Development
-### How to run
+## How to run
 To start the backend:
 > cd backend; npm run auto
 > 
 To start the frontend: (run in another terminal)
 > cd my-app; npm start
 
-### Technologies used
-react.js, mongoDB, Express.js, Node.js, mongoose, axios
+## Technologies used
+- react.js 
+- mongoDB
+- Express.js
+- Node.js
+- mongoose
+- axios
